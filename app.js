@@ -22,5 +22,9 @@ app.get('/descripcion', (req, res) => {
     res.render('pages/descripcion');
 });
 
+app.use((req, res) => {
+    res.status(404).send('404 Not Found');
+});
+
 
 app.listen(3000, () => console.log("Server en linea 🫡"));
