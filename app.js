@@ -18,5 +18,9 @@ app.get('/index', (req, res) => {
     res.render('pages/index');
 });
 
+app.get('/descripcion', (req, res) => {
+    res.render('pages/descripcion');
+});
+
 
 app.listen(3000, () => console.log("Server en linea 🫡"));
