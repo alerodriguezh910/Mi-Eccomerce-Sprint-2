@@ -10,7 +10,10 @@ router.get('/register', controller.register);
 router.post('/register', controller.procesarRegister);
 router.get('/index', controller.index);
 router.get('/descripcion', controller.descripcion);
+router.get('/descripcionRiver', controller.descripcionRiver);
 router.get('/checkout', controller.checkout);
 router.get('/carrito', controller.carrito);
+
+
 
 module.exports = router;
