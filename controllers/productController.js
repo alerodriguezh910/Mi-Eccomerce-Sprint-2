@@ -25,30 +25,39 @@ const productController = {
 
     index: (req, res) => {
         try {
-
             const productsFilePath = path.join(__dirname, '../data/productos.json');
             const productsData = fs.readFileSync(productsFilePath, 'utf-8');
             const allProducts = JSON.parse(productsData);
-
-
+            
             let destacados = allProducts.filter(producto => producto.destacado === true);
 
-
             destacados = destacados.sort(() => 0.5 - Math.random());
-
-
             const sugeridos = destacados.slice(0, 5);
 
+            let masPedidos = [...destacados];
+            
+            if (masPedidos.length < 10) {
+                const otros = allProducts.filter(p => p.destacado !== true);
+                masPedidos = [...masPedidos, ...otros];
+            }
 
-            res.render('pages/index', { sugeridos: sugeridos });
+            masPedidos = masPedidos.sort(() => 0.5 - Math.random());
+            const top10 = masPedidos.slice(0, 10);
+
+            res.render('pages/index', {
+                topProducts: top10,
+                sugeridos: sugeridos 
+            });
 
         } catch (error) {
-            console.error("Error cargando la Home:", error);
-
-            res.render('pages/index', { sugeridos: [] });
+            console.error("Error cargando los productos en la Home:", error);
+    
+            res.render('pages/index', { 
+                topProducts: [], 
+                sugeridos: [] 
+            });
         }
     },
-
     descripcion: (req, res) => {
 
         const productsFilePath = path.join(__dirname, '../data/productos.json');
@@ -79,7 +88,7 @@ const productController = {
             relacion: relacion
         });
 
-    }
-};
+    }}
 
+    
 module.exports = productController;
