@@ -3,8 +3,6 @@
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   </head>
 
-
-  <!-- Videos laterales -->
   <div class="anuncio izquierdo">
     <video src="/img/video1.mp4" autoplay muted loop></video>
   </div>
@@ -12,9 +10,7 @@
     <video src="/img/video1.mp4" autoplay muted loop></video>
   </div>
 
-  <!-- Navegación -->
   <header class="nave">
-    <!-- Contenedor centro: logo + barra de búsqueda -->
     <div class="centro">
       <div class="logo">
         <img src="/img/logo.jpeg" alt="logo">
@@ -24,7 +20,6 @@
       </div>
     </div>
 
-    <!-- Iconos alineados a la derecha -->
     <div class="iconos">
       <div class="icono">
         <a href="perfil.html"><button class="boton"><img src="/img/usuario.png" width="30px" height="30px"></button></a>
@@ -36,9 +31,33 @@
     </div>
   </header>
 
-  <!-- Contenido Principal -->
   <main class="contenedor">
 
+    <h2 class="Titulos1">Te puede interesar</h2>
+    <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-bottom: 30px; width: 100%;">
+      <% if (typeof sugeridos !=='undefined' && sugeridos.length> 0) { %>
+        <% sugeridos.forEach(producto=> { %>
+          <a class="link" href="/products/<%= producto.id %>">
+            <section class="tarjeta">
+              <h2>
+                <%= producto.nombre %>
+              </h2>
+              <ul>
+                <img src="<%= producto.imagen ? producto.imagen : 'https://placehold.co/300x300?text=Sin+Imagen' %>"
+                  alt="<%= producto.nombre %>">
+                <li>$ <%= producto.precio %>
+                </li>
+                <li>Los productos personalizados no están sujetos a cambios y/o devoluciones.</li>
+              </ul>
+            </section>
+          </a>
+          <% }) %>
+            <% } %>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-bottom: 30px; width: 100%;">
+    </div>
+    <h2 class="Titulos1">Camisetas</h2>
+    </div>
     <a class="link" href="/products/1">
       <section class="tarjeta">
         <h2>Camiseta de Boca Juniors</h2>
@@ -58,7 +77,6 @@
         <li>Los productos personalizados no están sujetos a cambios y/o devoluciones.</li>
       </section>
     </a>
-
 
     <a class="link" href="/products/3">
       <section class="tarjeta">
@@ -105,7 +123,7 @@
     </a>
 
     <h2 class="Titulos1">Botines</h2>
-        
+
     <section class="tarjeta">
       <a class="link" href="/products/7">
         <h2>Zona de envío gratis</h2>
@@ -126,7 +144,6 @@
         </ul>
       </section>
     </a>
-
 
     <section class="tarjeta">
       <a class="link" href="/products/9">
@@ -155,13 +172,12 @@
       </a>
     </section>
 
-  <h2 class="Titulos1">Guantes</h2>
+    <h2 class="Titulos1">Guantes</h2>
 
     <a class="link" href="/products/12">
       <section class="tarjeta">
         <h2>Zona de envío gratis</h2>
         <img src="/img/guantes1.jpg" alt="">
-
         <li>$ 149.999</li>
         <li>Los productos personalizados no están sujetos a cambios y/o devoluciones.</li>
       </section>
@@ -171,7 +187,6 @@
       <section class="tarjeta">
         <h2>Zona de envío gratis</h2>
         <img src="/img/guantes2.jpg" alt="">
-
         <li>$ 149.999</li>
         <li>Los productos personalizados no están sujetos a cambios y/o devoluciones.</li>
       </section>
@@ -181,7 +196,6 @@
       <section class="tarjeta">
         <h2>Zona de envío gratis</h2>
         <img src="/img/guantes3.jpg" alt="">
-
         <li>$ 149.999</li>
         <li>Los productos personalizados no están sujetos a cambios y/o devoluciones.</li>
       </section>
@@ -191,7 +205,6 @@
       <section class="tarjeta">
         <h2>Zona de envío gratis</h2>
         <img src="/img/guantes4.jpg" alt="">
-
         <li>$ 149.999</li>
         <li>Los productos personalizados no están sujetos a cambios y/o devoluciones.</li>
       </section>
@@ -201,19 +214,17 @@
       <section class="tarjeta">
         <h2>Zona de envío gratis</h2>
         <img src="/img/guantes5.jpg" alt="">
-
         <li>$ 149.999</li>
         <li>Los productos personalizados no están sujetos a cambios y/o devoluciones.</li>
       </section>
     </a>
 
-  <h2 class="Titulos1">Pelotas</h2>
+    <h2 class="Titulos1">Pelotas</h2>
 
     <a class="link" href="/products/17">
       <section class="tarjeta">
         <h2>Zona de envío gratis</h2>
         <img src="/img/pelota1.jpg" alt="">
-
         <li>$ 149.999</li>
         <li>Los productos personalizados no están sujetos a cambios y/o devoluciones.</li>
       </section>
@@ -223,16 +234,11 @@
       <section class="tarjeta">
         <h2>Zona de envío gratis</h2>
         <img src="/img/pelota2.jpg" alt="">
-
         <li>$ 149.999</li>
         <li>Los productos personalizados no están sujetos a cambios y/o devoluciones.</li>
       </section>
     </a>
 
   </main>
-
-
-
-
 
   <%- include('../partials/footer') %>
