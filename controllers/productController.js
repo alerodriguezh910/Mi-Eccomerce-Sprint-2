@@ -1,5 +1,4 @@
-const fs = require('fs');
-const path = require('path');
+const productsService = require('../services/productsService');
 
 const productController = {
 
@@ -25,25 +24,10 @@ const productController = {
 
     index: (req, res) => {
         try {
-            const productsFilePath = path.join(__dirname, '../data/productos.json');
-            const productsData = fs.readFileSync(productsFilePath, 'utf-8');
-            const allProducts = JSON.parse(productsData);
-
-            let destacados = allProducts.filter(producto => producto.destacado === true);
-
-            destacados = destacados.sort(() => 0.5 - Math.random());
-            const sugeridos = destacados.slice(0, 5);
-
-            let masPedidos = [...destacados];
-
-            if (masPedidos.length < 10) {
-                const otros = allProducts.filter(p => p.destacado !== true);
-                masPedidos = [...masPedidos, ...otros];
-            }
-
-            masPedidos = masPedidos.sort(() => 0.5 - Math.random());
-            const top10 = masPedidos.slice(0, 10);
-
+            
+            const sugeridos = productsService.getSugeridos();
+            const top10 = productsService.getMasPedidos();
+            
             res.render('pages/index', {
                 topProducts: top10,
                 sugeridos: sugeridos
@@ -60,36 +44,35 @@ const productController = {
     },
     descripcion: (req, res) => {
 
-        const productsFilePath = path.join(__dirname, '../data/productos.json');
-        const productsData = fs.readFileSync(productsFilePath, 'utf-8');
-        const allProducts = JSON.parse(productsData);
-
         const productId = parseInt(req.params.id);
-        const productoPrincipal = allProducts.find(p => p.id === productId);
+
+        const productoPrincipal = productsService.getById(productId);
 
         if (!productoPrincipal) {
             return res.status(404).send('No se encontro el producto');
         }
 
-        let relacion = allProducts.filter(
-            p => p.categoria &&
-                p.categoria === productoPrincipal.categoria &&
-                p.id !== productId
-        );
-
-        if (relacion.length > 4) {
-            relacion = relacion.sort(() => 0.5 - Math.random());
-        }
-
-        relacion = relacion.slice(0, 4);
+        const relacion = productsService.getRelated(productoPrincipal.categoria, productId);
 
         res.render('pages/descripcion', {
             producto: productoPrincipal,
             relacion: relacion
         });
 
+    },
+    categoria: (req, res) => {
+        
+        const categoryParam = req.params.category;
+        const productosFiltrados = productsService.getByCategory(categoryParam);
+
+        res.render('pages/categorias', {
+            categoriaNombre: categoryParam,
+            productos: productosFiltrados
+        });
     }
+
 }
+
 
 
 module.exports = productController;
