@@ -1,4 +1,4 @@
-/* NAVEGACIÓN Y BARRA */
+
 .nave {
   display: flex;
   align-items: center;
@@ -62,7 +62,7 @@
   color: white;
 }
 
-/* ESTILOS GENERALES (AQUÍ ESTÁ EL TRUCO) */
+
 body {
   background-color: #121212;
   font-family: Arial, sans-serif;
@@ -70,21 +70,17 @@ body {
   margin: 0;
   padding: 2rem;
   padding-top: 100px;
-  /* Evita que el navbar tape el contenido */
   box-sizing: border-box;
-
-  /* Convertimos el body en Flexbox vertical */
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  /* Fuerza a la página a medir mínimo el 100% de la ventana */
+  
 }
 
-/* TARJETA DEL CARRITO */
+
 .tarjeta_carrito {
   max-width: 800px;
   width: 100%;
-  /* Asegura buena adaptación */
   margin: 20px auto;
   padding: 15px;
   background-color: #1a1a1a;
@@ -98,7 +94,6 @@ body {
   box-shadow: 0 4px 15px rgba(255, 255, 255, 0.05);
 }
 
-/* ELEMENTOS DE LA TARJETA */
 .img {
   width: 100px;
   height: 100px;
@@ -196,17 +191,14 @@ body {
   }
 }
 
-/* FOOTER CORREGIDO */
+
 .footer {
   background-color: #000000;
   color: white;
   text-align: center;
   padding: 25px 0;
   width: 100%;
-
-  /* EL CAMBIO CLAVE: */
   margin-top: auto;
-  /* Empuja de forma dinámica el footer al fondo de la pantalla */
 }
 
 .footer a {
