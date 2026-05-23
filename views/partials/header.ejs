@@ -1,22 +1,25 @@
-
-
+<link rel="stylesheet" href="/css/style.css">
 <header class="nave">
-  <!-- Contenedor centro: logo + barra de búsqueda -->
-  <div class="centro">
-    <div class="logo">
-    </div>
-    <div class="barra">
-      <input type="text" placeholder="Buscar...">
-    </div>
-  </div>
+    <div class="centro">
+        <div class="logo">
+            <img src="/img/logo.jpeg" alt="logo">
+        </div>
 
-  <!-- Iconos alineados a la derecha -->
-  <div class="iconos">
-    <div class="icono">
-      <a href=""><button class="boton"><img src="./img/usuario.png" width="30px" height="30px"></button></a>
+        <div class="barra">
+            <form class=" barra" type="submit" action="/searchResults" method="GET">
+                <input type="text" name="query" placeholder="Buscar productos..." required>
+            </form>
+        </div>
     </div>
-    <div class="icono">
-      <a href=""><button class="boton"><img src="./img/carrito-de-compras.png" width="30px" height="30px"></button></a> 
+
+    <div class="iconos">
+        <div class="icono">
+            <a href="perfil.html"><button class="boton"><img src="/img/usuario.png" width="30px"
+                        height="30px"></button></a>
+        </div>
+        <div class="icono">
+            <a href="/carrito"><button class="boton"><img src="/img/carrito-de-compras.png" width="30px"
+                        height="30px"></button></a>
+        </div>
     </div>
-  </div>
 </header>

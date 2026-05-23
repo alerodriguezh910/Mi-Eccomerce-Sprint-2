@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
+<header>
+    <%- include('../partials/header') %>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carrito de Compras</title>
     <link rel="stylesheet" href="/css/carrito.css">
-</head>
+</header>
+
+    
+
 <body>
 
-<%- include('../partials/header') %>
+
 
 <section class="carrito-container">
     <h1 class="carrito-titulo">🛒 Tu Carrito</h1>
@@ -59,10 +63,10 @@
 
         <div class="carrito-acciones">
             <form action="/cart/clear" method="POST">
-                <button type="submit" class="boton boton-vaciar">Vaciar carrito</button>
+                <button type="submit" class="boton-boton-vaciar">Vaciar carrito</button>
             </form>
 
-            <a href="/checkout" class="boton boton-comprar">Finalizar compra</a>
+            <a href="/checkout" class="boton-boton-comprar">Finalizar compra</a>
         </div>
 
     <% } %>
