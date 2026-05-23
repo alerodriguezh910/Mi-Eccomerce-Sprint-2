@@ -38,9 +38,18 @@
                     diaria.</p>
                <p>Nota: Los productos personalizados no están sujetos a cambios y/o devoluciones.</p>
                <a class="volver" href="/index">← Volver al inicio</a>
-               <form action="/cart/add/<%= producto.id %>" method="POST" style="display:inline;">
-                    <button type="submit" class="volver">🛒 Agregar al carrito</button>
-               </form>
+
+               <% if (producto.stock===0) { %>
+                    <span
+                         style="background-color: red; color: white; padding: 5px; border-radius: 5px; font-weight: bold; margin-left: 10px;">Sin
+                         stock</span>
+                    <button type="button" class="volver" disabled style="opacity: 0.5; cursor: not-allowed;">🛒 Agregar
+                         al carrito</button>
+                    <% } else { %>
+                         <form action="/cart/add/<%= producto.id %>" method="POST" style="display:inline;">
+                              <button type="submit" class="volver">🛒 Agregar al carrito</button>
+                         </form>
+                         <% } %>
           </div>
      </div>
 
