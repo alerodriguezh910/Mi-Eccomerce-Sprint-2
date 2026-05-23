@@ -19,6 +19,18 @@ app.use(session({
     cookie: { secure: false }
 }));
 
+app.use((req, res, next) => {
+    let total = 0;
+    
+    if (req.session.cart && Array.isArray(req.session.cart)) {
+        total = req.session.cart.reduce((acum, item) => {
+            let cantidad = parseInt(item.quantity) || 0; 
+            return acum + cantidad;
+        }, 0);
+    }
+    res.locals.totalCarrito = total;
+    next();
+});
 
 app.use(express.static('public'));
 

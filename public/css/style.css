@@ -246,7 +246,26 @@ h3 {
   }
 
 }
-
+.enlace-carrito {
+    position: relative;
+    display: inline-block;
+}
+.badge-carrito {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: red;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    min-width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none; 
+}
 .footer {
   background-color: #000000;
   color: white;
